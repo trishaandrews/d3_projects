@@ -49,7 +49,7 @@ function heatmap_display(url, heatmapId, paletteName, model) {
         legendrange.push(i);
     }
     var modeldir = "./heatmaps/";
-    var model = "mnb";
+    //var model = "linsvc";
     var maxlim = 500;
     var maxk = 300;
     var lim = 500;
@@ -388,11 +388,11 @@ function heatmap_display(url, heatmapId, paletteName, model) {
 	    }else if (newval <= 300) {
 		newmodel = "logreg";
 	    }else if (newval <= 400) {
-		newmodel = "linsvc";
-	    }else if (newval <= 500) {
 		newmodel = "gnb";
-	    }else {
+	    }else if (newval <= 500) {
 		newmodel = "mnb";
+	    }else {
+		newmodel = "linsvc";
 	    }
 	    return newmodel
 	 }
