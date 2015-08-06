@@ -10,6 +10,7 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/colorbrewer.v1.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://d3js.org/queue.v1.min.js"></script>
 <!--<script src="https://github.com/turban/d3.slider/d3.slider.js"></script>
 -->
 <script src="heatmap.js"></script>
@@ -18,15 +19,22 @@
 <head>
 <title>Trisha's Heatmap</title>
 <script>
+//queue()
+//   .defer(d3.dsv, "./heatmaps/accuracies.txt")
+//   .await(getAccuracy)
+
+
 $(document).ready(function() {
-	heatmap_display("./heatmaps/linsvc_lim=500_k=300.json", "#heatmap", "PuRd", 'linsvc');
+    heatmap_display("./heatmaps/linsvc_lim=500_k=300.json", "#heatmap", "PuRd", 'linsvc');
 });
 </script>
 
 </head>
 
 <body>
-
+<p></p>
+<p> text text text text <br>
+text text text text offset? <br> text text </p>
 <div id="heatmap"></div>
 <table style="height:80px; width:80%; text-align: center">
   <tr>
@@ -36,18 +44,18 @@ $(document).ready(function() {
          <p>
             <label for="lim" 
                 style="display: inline-block; text-align: center">
-            # Images:<span id="lim-value"></span>
+            Training Images:<span id="lim-value"></span>
             </label>
-            <input type="range" min="1" max="510" id="lim" value="500">
+            <input type="range" min="1" max="510" id="lim" value="510">
         </p>
         </tr>
         <tr>
          <p>
             <label for="k" 
                 style="display: inline-block; text-align: center">
-            # Clusters:<span id="k-value"></span>
+            KMeans Clusters:<span id="k-value"></span>
             </label>
-            <input type="range" min="1" max="310" id="k" value="300">
+            <input type="range" min="1" max="310" id="k" value="310">
         </p>
         </tr>
     </table>
@@ -90,8 +98,8 @@ $(document).ready(function() {
   <option value="BuPu">BuPu</option>
   <option value="RdPu">RdPu</option>
   <option value="PuRd" selected>PuRd</option>
- <!-- <option value="RdGy">RdGy</option>
-  <option value="RdBu">RdBu</option>
+ <option value="RdGy">RdGy</option>
+  <option value="PuBu">RdBu</option>
   <option value="PiYG">PiYG</option>
   <option value="PRGn">PRGn</option>
   <option value="BrBG">BrBG</option>

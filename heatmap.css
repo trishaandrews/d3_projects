@@ -1,5 +1,5 @@
 .heatmap {
-  font-size: 8px;
+  font-size: 12px;
   font-family: monospace;
 }
 rect.bordered {
@@ -11,15 +11,15 @@ rect.slider {
   border: solid 1px #aaa;
 }
 text.mono {
-  font-size: 12px;
+  font-size: 14px;
   font-family: helvetica;/*monospace;*/
   fill: #000;
 }
 text.legendElement {
-  font-size: 10px;
+  font-size: 12px;
 }
 text.textlegendElement {
-  font-size: 14px;
+  font-size: 16px;
 }
 text.hover {
   font-weight: bold;
@@ -84,6 +84,6 @@ text.hover {
 .axislabeltext {
 	text-anchor: middle;
 	font-family: helvetica;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: 450;
 }
