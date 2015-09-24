@@ -1,0 +1,52 @@
+All
+
+cluster: 0
+Shortish (~22 token) sentences, high usage of commas, shortish average token length (~3.7 characters), high frequency of stopwords such as "the" and "of" but none of "to", "and", or "in".
+3847 total sentences
+
+cluster: 1
+Short (~10 token) sentences, short average token length (~3.6 characters), high usage of commas but no stop words.
+3744 total sentences
+
+cluster: 2
+Medium length (~57 token) sentences, very high comma usage (>1/5 tokens) with no "and"s, and short average token length (~3.43 characters)
+1089 total sentences
+
+cluster: 3
+Very long (~274 token) sentences, stop words such as "for", "to", "what", "we", and "this", possessives, and long dash ("–") punctuation. Token length and frequency of periods and commas unimportant. Only cluster that changes with addition of adverbs (high use of the word "finally")
+16 total sentences
+
+cluster: 4
+Medium length (~35 token) sentences, long average token length (~4.5 characters) and high use of the word "a" but not "of" or "to".
+2736 total sentences
+
+cluster: 5
+Long (~95 token) sentences, low frequency of periods relative to other tokens and minimal usage of words such as "and" and "to". Average token length is less important, but long (~4.8 characters)
+211 total sentences
+
+
+Science
+
+cluster: 0
+Shortish (~22 token) sentences and shortish (~3.6 character) average token length. High use of stopwords such as "the" and "of"
+531 total sentences
+
+cluster: 1
+Very short (~8 token) sentences, with short-medium (~3.75 character) average token length. High use of "the" and no commas
+364 total sentences
+
+cluster: 2
+Long (~101 token) sentences, average token length less important but quite long (~5.0 character). Very high use of the word "of", with additional stopwords such as "and", "in", and the character ":". Only a single or few "."s
+9 total sentences
+
+cluster: 3
+Medium (~42 token) sentences with long (~4.5 character) tokens. Very high usage of "in" and "the", and moderate comma usage
+160 total sentences
+
+cluster: 4
+Medium (~26 token) sentences with long (~4.9 character) average token length. Use of the words "and" and "of" but not "in" or "a"
+356 total sentences
+
+cluster: 5
+Long (~62 token) sentences with long (~4.7 character) average token length. Usage of posessives and colons as well as the word "by"
+51 total sentences

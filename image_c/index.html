@@ -11,18 +11,13 @@
 <script src="http://d3js.org/colorbrewer.v1.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="http://d3js.org/queue.v1.min.js"></script>
-<!--<script src="https://github.com/turban/d3.slider/d3.slider.js"></script>
--->
+
 <script src="heatmap.js"></script>
 <link rel="stylesheet" href="heatmap.css" />
 
 <head>
 <title>Trisha's Heatmap</title>
 <script>
-//queue()
-//   .defer(d3.dsv, "./heatmaps/accuracies.txt")
-//   .await(getAccuracy)
-
 
 $(document).ready(function() {
     heatmap_display("./heatmaps/linsvc_lim=500_k=300.json", "#heatmap", "PuRd", 'linsvc');
@@ -32,11 +27,8 @@ $(document).ready(function() {
 </head>
 
 <body>
-<p></p>
-<p> text text text text <br>
-text text text text offset? <br> text text </p>
 <div id="heatmap"></div>
-<table style="height:80px; width:80%; text-align: center">
+<table style="height:60px; width:80%; text-align: center; align: center">
   <tr>
     <td>
     <table ><!--style="width:30%;">-->
@@ -53,15 +45,15 @@ text text text text offset? <br> text text </p>
          <p>
             <label for="k" 
                 style="display: inline-block; text-align: center">
-            KMeans Clusters:<span id="k-value"></span>
+            Feature Centers:<span id="k-value"></span>
             </label>
             <input type="range" min="1" max="310" id="k" value="310">
         </p>
         </tr>
     </table>
     </td>
-    <td>
-    <table>
+    <td style="text-align: left; align: left"> <!--
+    <table style="text-align: left; align: left">
     <tr><!--
     Model:
     <select id="model">
@@ -70,27 +62,40 @@ text text text text offset? <br> text text </p>
     <option value="gnb">Gaussian Naive Bayes</option>
     <option value="linsvc">Linear SVC</option>
     <option value="logreg">Logistic Regression</option>
-    <option value="rf">Random Forrest</option>
+    <option value="rf">Random Forest</option>
     <option value="tree">Decision Tree</option>
-    </select>-->
+    </select>
     </tr>
-    <tr>
+    <tr><!--
     <p>
       <label for="mname" 
          style="display: inline-block; text-align: center">
          Model Slider:<span id="mname-value"></span>
       </label>
       <input type="range" min="1" max="600" id="mname" value="600">
-    </p>
-    </tr>
-    </table>
+    </p>-->
+    <!--
+      <label for="mnb"
+         style="display: inline-block; text-align: center">
+
+      
+      <form action="">
+         <button type="button" name="mnb" value="mnb">Multinomial Naive Bayes</button>
+      </form>
+      </label>-->
+      Model:
+      <form action="" id="model">
+        <input type="radio" name="mnradio" value="linsvc" checked>Linear SVC<br>
+        <input type="radio" name="mnradio" value="mnb">Multinomial Naive Bayes<br>
+        <input type="radio" name="mnradio" value="gnb">Gaussian Naive Bayes<br>
+        <input type="radio" name="mnradio" value="logreg">Logistic Regression<br>
+        <input type="radio" name="mnradio" value="rf">Random Forest<br>
+        <input type="radio" name="mnradio" value="tree">Decision Tree<br>
+      </form>
+    <!--</tr>
+    </table>-->
     </td>
   </tr>
-  <!--<tr>
-    <td>Eve</td>
-    <td>Jackson</td> 
-    <td>94</td>
-  </tr>-->
 </table>
 
 <!--Palette:

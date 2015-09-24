@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+
+    
+    
+    
+    <!-- <link rel="shortcut icon" href="popcha.ico" type="image/x-icon">-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>-->
+    <script src="http://d3js.org/d3.v3.min.js"</script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="guardian_graph.js"></script>
+    <link rel="stylesheet" href="guardian_graph.css"/>
+<head>
+    <title>Guardian Author and Topic Network</title>
+    <script>
+      $(document).ready(function() {
+          Graph_authors("science");
+       });
+    </script>
+</head>
+<body>
+  <table style="width: 50%; height: 100 px">
+  <tr>
+  <td valign="top">
+  Node size scale:
+      <form action="" id="scale">
+        <input type="radio" name="scale" value="log">Log<br>
+        <input type="radio" name="scale" value="sqrt" checked>Square Root<br>
+        <input type="radio" name="scale" value="linear">Linear<br>
+      </form>
+   </td>
+   <td valign="top">
+   Topic
+      <form action="" id="topic">
+        <table>
+        <td>
+        <input type="radio" name="topic" value="all">All<br>
+        <input type="radio" name="topic" value="arts">Arts<br>
+        <input type="radio" name="topic" value="politics">Politics<br>
+        </td>
+        <td>
+        <input type="radio" name="topic" value="science" checked>Science<br>
+        <input type="radio" name="topic" value="sports">Sports<br>
+        </td>
+      </form>
+   </td>
+   </tr>
+   </table>
+</body>
+</html>

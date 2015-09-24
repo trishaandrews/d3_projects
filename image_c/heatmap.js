@@ -1,5 +1,6 @@
 var classesNumber = 10,
     cellSize = 40, numbercells = 10;
+var coordinates = [0, 0];
 
 //#########################################################
 function heatmap_display(url, heatmapId, paletteName, model) {
@@ -11,11 +12,12 @@ function heatmap_display(url, heatmapId, paletteName, model) {
     // http://bl.ocks.org/mbostock/5577023
 
     //==================================================
-    var tooltip = d3.select(heatmapId)
+   /* var tooltip = d3.select(heatmapId)
+    //var tooltip = d3.select("g.tooltip.mouse")
         .append("div")
         .style("position", "absolute")
-        .style("visibility", "hidden");
-
+        .style("visibility", "hidden");*//*
+    var mouseCoords = d3.mouse(tooltip.node().parentElement);*/
     //==================================================
     //var paddingheight = 0;//150;
     //var paddingwidth = 0;// 100;
@@ -49,7 +51,9 @@ function heatmap_display(url, heatmapId, paletteName, model) {
     
     //==================================================
     d3.json(url, function(error, data) {
-	
+	//var tooltip = d3.select(heatmapId)
+	//	var mouseCoords = d3.mouse(tooltip.node().parentElement);
+
         var arr = data.data;
         var row_number = arr.length;
         var col_number = arr[0].length;
@@ -63,7 +67,7 @@ function heatmap_display(url, heatmapId, paletteName, model) {
             .attr("height", viewerHeight)
             .append("g")
             .attr("transform", "translate(" + viewerPosLeft + "," + viewerPosTop + ")");
-
+	
         svg.append('defs')
             .append('pattern')
             .attr('id', 'diagonalHatch')
@@ -191,7 +195,7 @@ function heatmap_display(url, heatmapId, paletteName, model) {
 	    .attr("height", cellSize)
 	    .style("fill", function(d, i, j) {
 		if ( i == j) {
-		    acc = d/10;
+		    acc = d;///10;
 		    if (acc != null){
 			accuracies.push(acc);
 		    }
@@ -212,18 +216,30 @@ function heatmap_display(url, heatmapId, paletteName, model) {
                 d3.select('#colLabel_' + i).classed("hover", false);
                 d3.select('#rowLabel_' + j).classed("hover", false);
                 tooltip.style("visibility", "hidden");
-            })/*
-            .on("mousemove", function(d, i, j) {
-		console.log(d3.event.pageX)
-                tooltip.style("top", (d3.event.pageY - 55) + "px").style("left", (d3.event.pageX - 60) + "px");
-            })*/
-            .on("mousemove", function(d, i, j) {
-                tooltip.style("top",  ((j+1)*cellSize + viewerPosTop) +"px").style("left",  ((i-1)*cellSize +  viewerPosLeft + (cellSize/2)) + "px");//-55 -60 //- 340
             })
+            .on("mousemove", function(d, i, j) {
+		//console.log(d3.event.pageX)
+                tooltip.style("top", (d3.event.pageY - 55) + "px").style("left", (d3.event.pageX - 60) + "px");
+            })/*
+           .on("mousemove", function(d, i, j) {
+                // //- 340
+                 coordinates = d3.mouse(this);
+                 var x = coordinates[0];
+                 var y = coordinates[1];
+                 tooltip.style("top",  (y+50) +"px").style("left",  (x+50) +"px");
+	       //tooltip.attr("transform", "translate("+this.getAttribute("cx")+"," +this.getAttribute("cy")+")");
+            })*/
             .on('click', function() {
                 changeOrder(heatmapId, antime);
             });
 	
+	var tooltip = svg.append("g")
+	//var tooltip = d3.select("g.tooltip.mouse")
+	    .attr("class", "heatmap_tooltip")
+            //.append("div")
+            .style("position", "absolute")
+            //.style("visibility", "hidden");
+
         var legend = svg.append("g")
             .attr("class", "legend")
             .attr("transform", "translate("+ (cellSize*numbercells - 40) + ", 0)")
@@ -314,9 +330,16 @@ function heatmap_display(url, heatmapId, paletteName, model) {
         });
 
 	// read a change in model
-	d3.select("#mname").on("input", function() {
-	    newmodel = checknewmodel(this.value);
-	    model = newmodel
+	//d3.select("#mname").on("input", function() {
+	//    newmodel = checknewmodel(this.value);
+	//    model = newmodel
+	//    update(newmodel, lim, k);
+	//});
+
+	// read a change in model button
+	$("input[name=mnradio]:radio").change(function () {
+	    //console.log(this.value)
+	    newmodel = this.value
 	    update(newmodel, lim, k);
 	});
 
@@ -423,10 +446,10 @@ function heatmap_display(url, heatmapId, paletteName, model) {
         }
 
         //==================================================
-        d3.select("#model").on("change", function() {
+        /*d3.select("#model").on("change", function() {
 	    var newModel = d3.select("#model").property("value");
 	    update(newModel, lim, k);
-        });
+        });*/
 
 	//===================================================
 	function update (newmodel, newlim, newk){
@@ -450,7 +473,7 @@ function heatmap_display(url, heatmapId, paletteName, model) {
 		    })
 		    .style("fill", function(d, i, j) {
 			if ( i == j) {
-			    acc = d/10;
+			    acc = d;///10;
 			    if (acc != null){
 				accuracies.push(acc);
 			    }
@@ -477,7 +500,7 @@ function heatmap_display(url, heatmapId, paletteName, model) {
 	    { 
 		count += accuracies[i]; 
 	    }
-	    return (count/numbercells).toFixed(4);
+	    return (count/numbercells).toFixed(3);
 	}
 	    
         //==================================================
